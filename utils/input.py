@@ -12,8 +12,10 @@ def aoc(year, day):
     if not token and not os.path.isfile(filename):
         raise Exception(f'SESSION_TOKEN not found in .env file and manual input in {filename} not found.')
 
-    with open(filename) as f:
-        curr = f.read().strip()
+    curr = ""
+    if os.path.isfile(filename):
+        with open(filename) as f:
+            curr = f.read().strip()
 
     if curr and not curr.startswith("Please don't repeatedly request this endpoint before it unlocks!"):
         return curr
